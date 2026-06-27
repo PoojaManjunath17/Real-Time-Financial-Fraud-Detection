@@ -9,8 +9,12 @@ producer = KafkaProducer(
 )
 
 # Read the dataset
-df = pd.read_csv("data/PS_20174392719_1491204439457_log.csv")
+import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+csv_path = os.path.join(BASE_DIR, "data", "PS_20174392719_1491204439457_log.csv")
+
+df = pd.read_csv(csv_path)
 print("Sending transactions to Kafka...")
 
 # Send first 100 transactions
