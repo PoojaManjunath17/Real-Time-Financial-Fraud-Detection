@@ -8,12 +8,27 @@ consumer = KafkaConsumer(
     value_deserializer=lambda m: json.loads(m.decode("utf-8"))
 )
 
-print("Waiting for transactions...\n")
+print("=" * 50)
+print("Kafka Consumer Started")
+print("Waiting for transactions...")
+print("=" * 50)
 
-for message in consumer:
-    transaction = message.value
+count = 0
 
-    print(
-        f"Received: {transaction['type']} | "
-        f"Amount: {transaction['amount']}"
-    )
+try:
+    for message in consumer:
+        transaction = message.value
+        count += 1
+
+        print(
+            f"[{count}] "
+            f"Type: {transaction['type']} | "
+            f"Amount: {transaction['amount']}"
+        )
+
+except KeyboardInterrupt:
+    print("\nConsumer stopped by user.")
+
+finally:
+    consumer.close()
+    print("Kafka Consumer Closed.")
