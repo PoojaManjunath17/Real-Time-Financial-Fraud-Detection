@@ -13,6 +13,24 @@ PaySim Synthetic Financial Transactions Dataset
 - MongoDB/Cassandra
 - Grafana
 - Docker
+- ## Day 6 - Kafka Consumer
+
+### Run Kafka Containers
+```bash
+docker compose up -d
+```
+
+### Start the Consumer
+```bash
+python consumer/consumer.py
+```
+
+### Start the Producer
+```bash
+python producer/producer.py
+```
+
+The consumer receives and displays transactions streamed from the Kafka topic in real time.
 
 ## Week 1 Goal
 Setup project infrastructure and simulate transaction streaming.
