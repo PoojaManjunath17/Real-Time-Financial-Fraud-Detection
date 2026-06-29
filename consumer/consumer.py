@@ -20,11 +20,14 @@ try:
         transaction = message.value
         count += 1
 
-        print(
-            f"[{count}] "
-            f"Type: {transaction['type']} | "
-            f"Amount: {transaction['amount']}"
-        )
+        print("=" * 50)
+        print(f"Transaction #{count}")
+        print(f"Type        : {transaction.get('type', 'N/A')}")
+        print(f"Amount      : {transaction.get('amount', 'N/A')}")
+        print(f"Origin      : {transaction.get('nameOrig', 'N/A')}")
+        print(f"Destination : {transaction.get('nameDest', 'N/A')}")
+        print(f"Fraud       : {transaction.get('isFraud', 'N/A')}")
+        print("=" * 50)
 
 except KeyboardInterrupt:
     print("\nConsumer stopped by user.")
