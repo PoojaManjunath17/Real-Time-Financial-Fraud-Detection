@@ -20,8 +20,7 @@ print("Sending transactions to Kafka...")
 # Send first 100 transactions
 for _, row in df.head(100).iterrows():
     transaction = row.to_dict()
-
-    producer.send("transactions", transaction)
+    producer.send("transactions_v2", transaction)
 
     print(f"Sent: {transaction['type']} | Amount: {transaction['amount']}")
 

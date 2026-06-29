@@ -2,7 +2,7 @@ from kafka import KafkaConsumer
 import json
 
 consumer = KafkaConsumer(
-    "transactions",
+    "transactions_v2",
     bootstrap_servers="localhost:9092",
     auto_offset_reset="earliest",
     value_deserializer=lambda m: json.loads(m.decode("utf-8"))
@@ -19,14 +19,19 @@ try:
     for message in consumer:
         transaction = message.value
         count += 1
-
         print("=" * 50)
         print(f"Transaction #{count}")
-        print(f"Type        : {transaction.get('type', 'N/A')}")
-        print(f"Amount      : {transaction.get('amount', 'N/A')}")
-        print(f"Origin      : {transaction.get('nameOrig', 'N/A')}")
-        print(f"Destination : {transaction.get('nameDest', 'N/A')}")
-        print(f"Fraud       : {transaction.get('isFraud', 'N/A')}")
+        print(f"Type        : {transaction['type']}")
+        print(f"Amount      : {transaction['amount']}")
+        print(f"Origin      : {transaction['nameOrig']}")
+        print(f"Destination : {transaction['nameDest']}")
+        print(f"Fraud       : {transaction['isFraud']}")
+
+        if int(transaction["isFraud"]) == 1:
+            print("🚨 FRAUD TRANSACTION DETECTED!")
+        else:
+            print("✅ Normal Transaction")
+
         print("=" * 50)
 
 except KeyboardInterrupt:
