@@ -45,6 +45,20 @@ df.info()
 # -----------------------------
 print("\nMissing Values:")
 print(df.isnull().sum())
+print("\nFraud Distribution:")
+print(df["isFraud"].value_counts())
+
+fraud_percentage = (df["isFraud"].sum() / len(df)) * 100
+
+print(f"\nFraud Percentage: {fraud_percentage:.4f}%")
+
+print("\nTransaction Types:")
+print(df["type"].value_counts())
+
+print("\nStatistical Summary:")
+print(df.describe())
+
+print("\nAnalysis Completed Successfully!")
 
 # -----------------------------
 # Fraud Distribution
