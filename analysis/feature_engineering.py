@@ -24,3 +24,20 @@ df["type"] = encoder.fit_transform(df["type"])
 
 print("\nAfter Encoding:")
 print(df["type"].head())
+# Display columns before dropping
+print("\nColumns Before Dropping:")
+print(df.columns)
+
+# Remove unnecessary columns
+df = df.drop(["nameOrig", "nameDest"], axis=1)
+
+# Display columns after dropping
+print("\nColumns After Dropping:")
+print(df.columns)
+
+# Save processed dataset
+processed_path = os.path.join(BASE_DIR, "data", "processed_data.csv")
+df.to_csv(processed_path, index=False)
+
+print("\nProcessed dataset saved successfully!")
+print(processed_path)
