@@ -7,9 +7,9 @@ from sklearn.metrics import (
     precision_score,
     recall_score,
     f1_score,
-    confusion_matrix
+    confusion_matrix,
+    classification_report
 )
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Load processed dataset
@@ -79,6 +79,9 @@ cm = confusion_matrix(y_test, y_pred)
 
 print("\nConfusion Matrix")
 print(cm)
+
+print("\nClassification Report")
+print(classification_report(y_test, y_pred))
 
 print("\n" + "=" * 50)
 print("MODEL EVALUATION SUMMARY")
