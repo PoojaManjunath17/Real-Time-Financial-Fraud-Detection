@@ -2,7 +2,13 @@ import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, precision_score# Project directory
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score
+)
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Load processed dataset
@@ -52,3 +58,11 @@ print(f"{precision:.4f}")
 
 print("\nFirst 20 Actual Values:")
 print(y_test.values[:20])
+print("\n" + "=" * 50)
+print("MODEL EVALUATION SUMMARY")
+print("=" * 50)
+print(f"Accuracy : {accuracy:.4f}")
+print(f"Precision: {precision:.4f}")
+print(f"Recall   : {recall:.4f}")
+print(f"F1 Score : {f1:.4f}")
+print("=" * 50)
