@@ -1,4 +1,5 @@
 import os
+import joblib
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
@@ -38,6 +39,10 @@ print("Testing Data Shape :", X_test.shape)
 model = LogisticRegression(max_iter=1000)
 
 model.fit(X_train, y_train)
+# Save trained model
+joblib.dump(model, "models/fraud_detection_model.pkl")
+
+print("\nModel saved successfully!")
 
 print("\nLogistic Regression Model Trained Successfully!")
 
