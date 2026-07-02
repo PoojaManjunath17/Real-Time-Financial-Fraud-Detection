@@ -6,7 +6,8 @@ from sklearn.metrics import (
     accuracy_score,
     precision_score,
     recall_score,
-    f1_score
+    f1_score,
+    confusion_matrix
 )
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -45,19 +46,40 @@ y_pred = model.predict(X_test)
 
 print("\nFirst 20 Predictions:")
 print(y_pred[:20])
+
+print("\nFirst 20 Actual Values:")
+print(y_test.values[:20])
+
 # Accuracy
 accuracy = accuracy_score(y_test, y_pred)
 
 print("\nAccuracy")
 print(f"{accuracy:.4f}")
+
 # Precision
 precision = precision_score(y_test, y_pred)
 
 print("\nPrecision")
 print(f"{precision:.4f}")
 
-print("\nFirst 20 Actual Values:")
-print(y_test.values[:20])
+# Recall
+recall = recall_score(y_test, y_pred)
+
+print("\nRecall")
+print(f"{recall:.4f}")
+
+# F1 Score
+f1 = f1_score(y_test, y_pred)
+
+print("\nF1 Score")
+print(f"{f1:.4f}")
+
+# Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+
+print("\nConfusion Matrix")
+print(cm)
+
 print("\n" + "=" * 50)
 print("MODEL EVALUATION SUMMARY")
 print("=" * 50)
