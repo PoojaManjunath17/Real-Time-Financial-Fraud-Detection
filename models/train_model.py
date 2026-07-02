@@ -82,7 +82,11 @@ print(cm)
 
 print("\nClassification Report")
 print(classification_report(y_test, y_pred))
-
+tn, fp, fn, tp = cm.ravel()
+print("\nFalse Positives :", fp)
+print("False Negatives :", fn)
+print("True Positives  :", tp)
+print("True Negatives  :", tn)
 print("\n" + "=" * 50)
 print("MODEL EVALUATION SUMMARY")
 print("=" * 50)
