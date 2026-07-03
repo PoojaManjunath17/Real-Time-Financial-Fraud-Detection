@@ -1,25 +1,102 @@
 import os
 import joblib
 import pandas as pd
-
-# Project directory
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    confusion_matrix,
+    classification_report
+)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Load model
-model_path = os.path.join(BASE_DIR, "models", "fraud_detection_model.pkl")
-model = joblib.load(model_path)
-
-print("Model loaded successfully!")
-
-# Load dataset
+# Load processed dataset
 data_path = os.path.join(BASE_DIR, "data", "processed_data.csv")
 df = pd.read_csv(data_path)
 
-# Take first 5 records
-sample = df.drop("isFraud", axis=1).head(5)
+print("Dataset Loaded Successfully!")
+print(df.head())
 
-# Predict
-prediction = model.predict(sample)
+# Features and Target
+X = df.drop("isFraud", axis=1)
+y = df["isFraud"]
 
-print("\nPredictions:")
-print(prediction)
+# Split dataset
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42
+)
+
+print("\nTraining Data Shape:", X_train.shape)
+print("Testing Data Shape :", X_test.shape)
+
+# Train Logistic Regression Model
+model = LogisticRegression(max_iter=1000)
+
+model.fit(X_train, y_train)
+# Save trained model
+joblib.dump(model, "models/fraud_detection_model.pkl")
+
+print("\nModel saved successfully!")
+
+print("\nLogistic Regression Model Trained Successfully!")
+
+# Predict on test data
+y_pred = model.predict(X_test)
+
+print("\nFirst 20 Predictions:")
+print(y_pred[:20])
+
+print("\nFirst 20 Actual Values:")
+print(y_test.values[:20])
+
+# Accuracy
+accuracy = accuracy_score(y_test, y_pred)
+
+print("\nAccuracy")
+print(f"{accuracy:.4f}")
+
+# Precision
+precision = precision_score(y_test, y_pred)
+
+print("\nPrecision")
+print(f"{precision:.4f}")
+
+# Recall
+recall = recall_score(y_test, y_pred)
+
+print("\nRecall")
+print(f"{recall:.4f}")
+
+# F1 Score
+f1 = f1_score(y_test, y_pred)
+
+print("\nF1 Score")
+print(f"{f1:.4f}")
+
+# Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+
+print("\nConfusion Matrix")
+print(cm)
+
+print("\nClassification Report")
+print(classification_report(y_test, y_pred))
+tn, fp, fn, tp = cm.ravel()
+print("\nFalse Positives :", fp)
+print("False Negatives :", fn)
+print("True Positives  :", tp)
+print("True Negatives  :", tn)
+print("\n" + "=" * 50)
+print("MODEL EVALUATION SUMMARY")
+print("=" * 50)
+print(f"Accuracy : {accuracy:.4f}")
+print(f"Precision: {precision:.4f}")
+print(f"Recall   : {recall:.4f}")
+print(f"F1 Score : {f1:.4f}")
+print("=" * 50)
