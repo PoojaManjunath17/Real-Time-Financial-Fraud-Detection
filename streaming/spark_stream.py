@@ -7,6 +7,14 @@ spark = SparkSession.builder \
         "org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1"
     ) \
     .getOrCreate()
+print("=" * 50)
+print("STREAMING CONFIGURATION")
+print("=" * 50)
+print("Application Name :", spark.sparkContext.appName)
+print("Kafka Server     : localhost:9092")
+print("Kafka Topic      : transactions_v2")
+print("Spark Version    :", spark.version)
+print("=" * 50)
 
 # Read Kafka Stream
 df = spark.readStream \
