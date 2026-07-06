@@ -28,6 +28,10 @@ sample_transaction = {
 sample_df = pd.DataFrame([sample_transaction])
 
 prediction = model.predict(sample_df)
+probability = model.predict_proba(sample_df)
+
+print("\nPrediction Probability")
+print(probability)
 
 print("\nPrediction Result")
 print(prediction)
