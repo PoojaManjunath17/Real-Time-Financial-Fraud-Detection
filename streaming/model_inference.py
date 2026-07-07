@@ -27,16 +27,27 @@ sample_transaction = {
 
 sample_df = pd.DataFrame([sample_transaction])
 
-prediction = model.predict(sample_df)
+# Prediction Function
+def predict_transaction(transaction_df):
+    prediction = model.predict(transaction_df)
+    return prediction
+
+# Test the prediction function
+result = predict_transaction(sample_df)
+
+# Prediction probability
 probability = model.predict_proba(sample_df)
 
 print("\nPrediction Probability")
 print(probability)
 
 print("\nPrediction Result")
-print(prediction)
+print(result)
 
-if prediction[0] == 1:
-    print("Fraudulent Transaction Detected")
+print("\nPrediction from Function:")
+print(result)
+
+if result[0] == 1:
+    print("🚨 Fraudulent Transaction Detected")
 else:
-    print("Normal Transaction")
+    print("✅ Normal Transaction")
