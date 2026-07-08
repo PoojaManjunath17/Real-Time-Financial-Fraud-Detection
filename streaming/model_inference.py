@@ -32,7 +32,6 @@ def predict_transaction(transaction_df):
     prediction = model.predict(transaction_df)
     return prediction
 
-# Day 20 - Commit 1
 # Batch prediction helper
 def predict_batch(transactions):
     predictions = model.predict(transactions)
@@ -59,7 +58,14 @@ print(result)
 print("\nBatch Prediction:")
 print(batch_result)
 
+# Day 20 - Commit 3
+print("\n" + "=" * 50)
+print("MODEL SCORING STATUS")
+print("=" * 50)
+
 if result[0] == 1:
+    print("Prediction Status : FRAUD")
     print("🚨 Fraudulent Transaction Detected")
 else:
+    print("Prediction Status : NORMAL")
     print("✅ Normal Transaction")
