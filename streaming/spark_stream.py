@@ -45,5 +45,12 @@ print("\nKafka Stream Schema")
 transactions.printSchema()
 
 print("\nStreaming pipeline initialized successfully.")
+print("\n" + "=" * 50)
+print("STREAMING PIPELINE SUMMARY")
+print("=" * 50)
+print("Kafka Topic        : transactions_v2")
+print("Prediction Model   : fraud_detection_model.pkl")
+print("Pipeline Status    : Ready for Fraud Scoring")
+print("=" * 50)
 
 spark.stop()
