@@ -32,9 +32,15 @@ transactions = df.selectExpr(
     "CAST(value AS STRING)"
 )
 
+# Day 20 - Commit 2
+print("=" * 50)
+print("PREPARING STREAM RECORDS FOR FRAUD SCORING")
+print("=" * 50)
+print("Incoming transactions will be processed by the ML model.")
+
 print("\nKafka Streaming DataFrame Created!")
 
-# Commit 4 - Schema Validation
+# Schema Validation
 print("\nKafka Stream Schema")
 transactions.printSchema()
 
