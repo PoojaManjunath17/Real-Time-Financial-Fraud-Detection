@@ -27,13 +27,22 @@ sample_transaction = {
 
 sample_df = pd.DataFrame([sample_transaction])
 
-# Prediction Function
+# Predict a single transaction
 def predict_transaction(transaction_df):
     prediction = model.predict(transaction_df)
     return prediction
 
-# Test the prediction function
+# Day 20 - Commit 1
+# Batch prediction helper
+def predict_batch(transactions):
+    predictions = model.predict(transactions)
+    return predictions
+
+# Test single prediction
 result = predict_transaction(sample_df)
+
+# Test batch prediction
+batch_result = predict_batch(sample_df)
 
 # Prediction probability
 probability = model.predict_proba(sample_df)
@@ -46,6 +55,9 @@ print(result)
 
 print("\nPrediction from Function:")
 print(result)
+
+print("\nBatch Prediction:")
+print(batch_result)
 
 if result[0] == 1:
     print("🚨 Fraudulent Transaction Detected")
