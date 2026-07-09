@@ -54,10 +54,7 @@ print("Prediction Model   : fraud_detection_model.pkl")
 print("Pipeline Status    : Ready for Fraud Scoring")
 print("=" * 50)
 
-# =====================================================
-# Day 21 - Commit 4
-# Simulate Sending Alerts to Database
-# =====================================================
+
 print("\n" + "=" * 50)
 print("DATABASE ROUTING")
 print("=" * 50)
