@@ -45,12 +45,24 @@ print("\nKafka Stream Schema")
 transactions.printSchema()
 
 print("\nStreaming pipeline initialized successfully.")
+
 print("\n" + "=" * 50)
 print("STREAMING PIPELINE SUMMARY")
 print("=" * 50)
 print("Kafka Topic        : transactions_v2")
 print("Prediction Model   : fraud_detection_model.pkl")
 print("Pipeline Status    : Ready for Fraud Scoring")
+print("=" * 50)
+
+# =====================================================
+# Day 21 - Commit 4
+# Simulate Sending Alerts to Database
+# =====================================================
+print("\n" + "=" * 50)
+print("DATABASE ROUTING")
+print("=" * 50)
+print("Fraud alerts will be stored in the Fraud Alerts database.")
+print("Streaming pipeline is ready for alert storage.")
 print("=" * 50)
 
 spark.stop()
