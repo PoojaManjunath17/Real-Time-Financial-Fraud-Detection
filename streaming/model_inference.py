@@ -27,15 +27,19 @@ sample_transaction = {
 
 sample_df = pd.DataFrame([sample_transaction])
 
-# Predict a single transaction
 def predict_transaction(transaction_df):
     prediction = model.predict(transaction_df)
     return prediction
 
-# Batch prediction helper
 def predict_batch(transactions):
     predictions = model.predict(transactions)
     return predictions
+
+def fraud_alert(prediction):
+    if prediction[0] == 1:
+        print("🚨 ALERT: Fraud Transaction Detected!")
+    else:
+        print("✅ Transaction is Safe")
 
 # Test single prediction
 result = predict_transaction(sample_df)
@@ -58,7 +62,11 @@ print(result)
 print("\nBatch Prediction:")
 print(batch_result)
 
-# Day 20 - Commit 3
+
+print("\nFraud Alert Status")
+fraud_alert(result)
+
+
 print("\n" + "=" * 50)
 print("MODEL SCORING STATUS")
 print("=" * 50)
