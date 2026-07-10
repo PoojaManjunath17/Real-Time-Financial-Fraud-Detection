@@ -40,11 +40,25 @@ print("Incoming transactions will be processed by the ML model.")
 
 print("\nKafka Streaming DataFrame Created!")
 
+# ===========================
+# Day 22 - Commit 2
+# ===========================
+print("\nMonitoring incoming Kafka transactions...")
+print("Streaming records are ready for prediction.")
+
 # Schema Validation
 print("\nKafka Stream Schema")
 transactions.printSchema()
 
 print("\nStreaming pipeline initialized successfully.")
+
+# ===========================
+# Day 22 - Commit 3
+# ===========================
+print("\nPrediction Configuration")
+print("Model            : Logistic Regression")
+print("Prediction Mode  : Real-Time")
+print("Input Source     : Kafka")
 
 print("\n" + "=" * 50)
 print("STREAMING PIPELINE SUMMARY")
@@ -53,7 +67,6 @@ print("Kafka Topic        : transactions_v2")
 print("Prediction Model   : fraud_detection_model.pkl")
 print("Pipeline Status    : Ready for Fraud Scoring")
 print("=" * 50)
-
 
 print("\n" + "=" * 50)
 print("DATABASE ROUTING")
