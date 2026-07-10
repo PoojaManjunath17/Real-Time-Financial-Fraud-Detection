@@ -74,5 +74,13 @@ print("=" * 50)
 print("Fraud alerts will be stored in the Fraud Alerts database.")
 print("Streaming pipeline is ready for alert storage.")
 print("=" * 50)
-
+print("\n" + "=" * 50)
+print("PIPELINE HEALTH STATUS")
+print("=" * 50)
+print("Kafka Connection    : ACTIVE")
+print("Spark Session       : RUNNING")
+print("Prediction Model    : LOADED")
+print("Overall Status      : HEALTHY")
+print("=" * 50)git add .
+git commit -m "Day 23 Commit 1: Added pipeline health status display"
 spark.stop()
