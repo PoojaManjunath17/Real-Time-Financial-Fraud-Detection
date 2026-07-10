@@ -48,3 +48,4 @@ except KeyboardInterrupt:
 finally:
     consumer.close()
     print("Kafka Consumer Closed.")
+
