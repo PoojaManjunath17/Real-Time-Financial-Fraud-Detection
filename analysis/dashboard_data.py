@@ -16,3 +16,12 @@ for key, value in dashboard_data.items():
     print(f"{key} : {value}")
 
 print("\nDashboard data generated successfully.")
+
+print("\n" + "=" * 50)
+print("VISUALIZATION STATUS")
+print("=" * 50)
+
+print("Grafana Dashboard : Planned")
+print("Database : MongoDB")
+print("Charts : Ready")
+print("Status : Waiting for Integration")
