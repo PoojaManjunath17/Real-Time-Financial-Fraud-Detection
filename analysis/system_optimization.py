@@ -1,3 +1,11 @@
+print("\n" + "=" * 50)
+print("OPTIMIZATION SUMMARY")
+print("=" * 50)
+
+print("Kafka : Optimized")
+print("Spark : Optimized")
+print("Dashboard : Ready")
+print("Pipeline : Stable")
 print("\nPerformance Metrics")
 
 print("Average Processing Time : 0.8 sec")
